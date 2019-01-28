@@ -1,5 +1,4 @@
-FROM python:3-slim
-
+FROM python:alpine
 WORKDIR /
 ENV SUCCESS_RATE=80 \
     FLASK_APP=app.py
