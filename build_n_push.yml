@@ -17,20 +17,6 @@ steps:
     image_name: bitspradp/test
     tag: latest
     registry: dockerhub
-  ScanMyImage:
-    title: Scanning Docker Image
-    image: anchore/engine-cli:latest
-    commands:
-      - echo "Scanning image with Anchore"
-      - anchore-cli image add bitspradp/test
-      - echo "Waiting for analysis to complete"
-      - anchore-cli image wait bitspradp/test
-      - anchore-cli --json image content bitspradp/test os
-      - anchore-cli --json image content bitspradp/test python
-      - anchore-cli --json image vuln bitspradp/test all
-      - anchore-cli --json image get bitspradp/test
-      - echo "Analysis complete"
-      - if [ "${{ANCHORE_FAIL_ON_POLICY}}" == "true" ] ; then anchore-cli --json evaluate check bitspradp/test --detail; fi
   pushAppImage:
     title: Pushing Docker Image
     description: Pushing Docker Image to Dockerhub...
