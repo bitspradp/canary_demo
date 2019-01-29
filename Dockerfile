@@ -6,3 +6,4 @@ STOPSIGNAL SIGINT
 CMD ["python", "/app.py"]
 RUN pip install flask prometheus_client
 COPY app.py /app.py
+copy version.py /version.py
